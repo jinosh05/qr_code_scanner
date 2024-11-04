@@ -31,7 +31,7 @@ class WebQrView extends StatefulWidget {
       : super(key: key);
 
   @override
-  WebQrViewState createState() => WebQrViewState();
+  _WebQrViewState createState() => _WebQrViewState();
 
   static html.DivElement vidDiv =
       html.DivElement(); // need a global for the registerViewFactory
@@ -51,7 +51,7 @@ class WebQrView extends StatefulWidget {
   }
 }
 
-class WebQrViewState extends State<WebQrView> {
+class _WebQrViewState extends State<WebQrView> {
   html.MediaStream? _localStream;
   // html.CanvasElement canvas;
   // html.CanvasRenderingContext2D ctx;
@@ -64,7 +64,7 @@ class WebQrViewState extends State<WebQrView> {
   String? code;
   String? _errorMsg;
   html.VideoElement video = html.VideoElement();
-  String viewID = 'QRVIEW-${DateTime.now().millisecondsSinceEpoch}';
+  String viewID = 'QRVIEW-' + DateTime.now().millisecondsSinceEpoch.toString();
 
   final StreamController<Barcode> _scanUpdateController =
       StreamController<Barcode>();
@@ -254,7 +254,7 @@ class WebQrViewState extends State<WebQrView> {
 }
 
 class QRViewControllerWeb implements QRViewController {
-  final WebQrViewState _state;
+  final _WebQrViewState _state;
 
   QRViewControllerWeb(this._state);
   @override
